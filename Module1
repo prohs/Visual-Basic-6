@@ -1,0 +1,35 @@
+Dim Key() As Variant
+Dim Alpha As String
+
+Public Sub Init()
+Key = Array(".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..")
+Alpha = "abcdefghijklmnopqrstuvwxyz"
+End Sub
+
+Public Function ScanKey(str As String) As Integer
+Dim x As Integer
+For x = 0 To UBound(Key)
+If Key(x) = str Then
+ScanKey = (x + 1)
+GoTo e
+Else
+ScanKey = 9999
+End If
+Next
+e:
+End Function
+
+Public Function ReturnKey(intt As Integer) As String
+Dim t As String
+If intt = 9999 Then
+ReturnKey = " "
+Else
+If intt = 0 Then
+ReturnKey = "a"
+Else
+t = Mid(Alpha, intt, 1)
+ReturnKey = t
+End If
+End If
+End Function
+

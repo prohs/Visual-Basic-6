@@ -1,0 +1,38 @@
+Private Sub Command1_Click()
+Dim x As Integer
+Dim t As String
+Dim c As String
+Dim word As String
+For x = 1 To Len(Text1.Text)
+If Mid(Text1, x, 1) = "." Then
+t = "."
+GoTo y:
+End If
+If Mid(Text1, x, 1) = "-" Then
+t = "-"
+GoTo y:
+End If
+If Mid(Text1, x, 1) = " " Then
+t = ""
+GoTo c:
+End If
+If Mid(Text1, x, 1) = "/" Then
+GoTo x:
+End If
+y:
+c = c & t
+t = ""
+GoTo x:
+c:
+word = word & c
+word = ReturnKey(ScanKey(word))
+Text2 = Text2.Text & word
+c = ""
+word = ""
+x:
+Next x
+End Sub
+
+Private Sub Form_Load()
+Call Init
+End Sub
